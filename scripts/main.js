@@ -1,8 +1,10 @@
-window.addEventListener('load', () =>{
-const $canvas = document.querySelector('canvas');
+window.addEventListener('load', () => {
+    const $canvas = document.querySelector('canvas');
 
-const game = new Game($canvas);
-
-game.paint();
-
-});
+    const game = new Game($canvas);
+    // document.getElementById('start-game').onclick = function (){
+    game.positionAlphabet();
+    game.clear();
+    game.paint();
+    //  }
+ });

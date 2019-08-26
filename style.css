@@ -1,0 +1,22 @@
+/* body{
+  background-image: url('images/apla3.jpg')  ;
+  /* background-repeat: no-repeat; */
+  background-size: 100%;
+} */
+
+body{
+  background-color: lightgrey;
+}
+
+canvas {
+    background-color: white;
+	position: absolute;
+	width: 600px;
+	height: 400px;
+	left: 50%; 
+	top: 50%; 
+    margin-left: -300px; 
+    /*This is half the width  */
+     margin-top: -200px;   
+    /*This is half the height */
+}

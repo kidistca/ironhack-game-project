@@ -2,9 +2,13 @@ window.addEventListener('load', () => {
     const $canvas = document.querySelector('canvas');
 
     const game = new Game($canvas);
-    // document.getElementById('start-game').onclick = function (){
-    game.positionAlphabet();
-    game.clear();
-    game.paint();
-    //  }
+
+    document.getElementById('start-game').onclick = function (){
+        game.positionAlphabet();
+        game.clear();
+        game.paint();
+        game.click();
+    }
  });
+
+ 

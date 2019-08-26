@@ -33,6 +33,21 @@ class Game {
         
     }
 
+    click(){
+        this.canvas.addEventListener('mousedown', function (e) {
+            let parentX = 0;
+            let parentY = 0;
+            let obj = this.canvas;
+            while (obj) {
+                parentX += obj.offsetLeft;
+                parentY += obj.offsetTop;
+                obj = obj.offsetParent;
+            } 
+            //onClick(e.clientX - parentX, e.clientY - parentY);
+        }, false);
+   
+}
+
     clear(){
         const width = this.canvas.width;
         const height = this.canvas.height;

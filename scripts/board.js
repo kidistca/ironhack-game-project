@@ -26,5 +26,14 @@ class Board{
                 this.context.stroke();
                 }
     }
-
+    hide(){
+        const SIZEX = 125;
+        const SIZEY = 125;
+        this.context.fillStyle ="#7BCCB5";
+        for(let i=0; i<4; i++){
+            for(let j=0; j<16; j++){
+                this.context.fillRect(i*SIZEX, j*SIZEY, 120, 120);
+        }
+    }
+    }
 }

@@ -11,42 +11,40 @@ class Game {
         this.canvas = canvas;
         this.context = canvas.getContext('2d');
         this.board = new Board(this);
+        this.control = new Control(this);
         this.deck = [];
+        this.types = [];
+
     }
 
     positionAlphabet(){
         const size = 4;
-        const types = [];
         for (let index = 0; index < (size * size) / 2; index++) {
-            types.push(index);
-            types.push(index);
+            this.types.push(index);
+            this.types.push(index);
         }
-        const shuffled = arrayShuffle(types);
+        const shuffled = arrayShuffle(this.types);
         this.deck = shuffled.map((type, index) => {
             let row = Math.floor(index / 4);
             let column = index % 4;
             return new Card(this, type, row, column);
         });
-    }
-
-    reset(){
+        // console.log(this.types);
         
     }
 
-    click(){
-        this.canvas.addEventListener('mousedown', function (e) {
-            let parentX = 0;
-            let parentY = 0;
-            let obj = this.canvas;
-            while (obj) {
-                parentX += obj.offsetLeft;
-                parentY += obj.offsetTop;
-                obj = obj.offsetParent;
-            } 
-            //onClick(e.clientX - parentX, e.clientY - parentY);
-        }, false);
-   
-}
+    reset(){
+        // this.card = new Card();
+        // setTimeout(()=> {
+            this.board.hide()
+        //   }, 4000);
+        
+    }
+
+    getPosition(){
+        // this.control = new Control();
+        this.control.getposition(this.types);
+    }
 
     clear(){
         const width = this.canvas.width;
@@ -60,5 +58,12 @@ class Game {
             const card = this.deck[index];
             card.paint();
         }
+    }
+
+    show(index){
+        this.board.show();
+        const card = this.deck[index];
+        card.paint();
+        
     }
 }

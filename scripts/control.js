@@ -3,13 +3,14 @@ class Control{
         // this.callbacks = callbacks;
         this.game = game;
         this.context = this.game.context;
+        this.board = new Board(game);
     }
     
     getposition(types){
         // let index = "";
      window.addEventListener("mousedown", event =>{
         if (event.target.tagName === 'CANVAS') {
-            this.game.paint();
+            // this.game.paint();
             let x = event.x;
             let y = event.y;
         
@@ -25,14 +26,14 @@ class Control{
         const col = Math.floor(x / 125);
         const index = col + Math.floor(row * 4);
 
-console.log(index);
+        this.game.show(index);
+        console.log(index);
+
         for(let i=0; i<types.length; i++){
             if(types[index] === types[i]){
                 console.log(i);
             }
         }
-
-
     }
     });
 }

@@ -12,8 +12,11 @@ class Game {
         this.context = canvas.getContext('2d');
         this.board = new Board(this);
         this.control = new Control(this);
+        //  this.card = new Card(this);
         this.deck = [];
         this.types = [];
+        this.row = 0;
+        this.column = 0;
 
     }
 
@@ -25,18 +28,20 @@ class Game {
         }
         const shuffled = arrayShuffle(this.types);
         this.deck = shuffled.map((type, index) => {
-            let row = Math.floor(index / 4);
-            let column = index % 4;
-            return new Card(this, type, row, column);
+            this.row = Math.floor(index / 4);
+            this.column = index % 4;
+            // this.card = new Card(this, type, row, column);
+            return new Card(this, type, this.row, this.column);
         });
-        // console.log(this.types);
+        // console.log(type);
         
     }
 
     reset(){
+        // const card = new Card();
         // this.card = new Card();
         // setTimeout(()=> {
-            this.board.hide()
+            this.board.hide();
         //   }, 4000);
         
     }
@@ -61,9 +66,16 @@ class Game {
     }
 
     show(index){
-        this.board.show();
-        const card = this.deck[index];
-        card.paint();
-        
-    }
+        for (let i = 0; i < this.deck.length; i++) {
+            if(i===index){
+            const card = this.deck[i];
+            card.show(index);
+            }
+        }
+        // const card = this.deck[index];
+        // card.show(index);
+        // return new Card(this, index, this.row, this.column);
+           
+        }
+    
 }

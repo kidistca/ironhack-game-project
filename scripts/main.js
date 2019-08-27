@@ -14,9 +14,9 @@ window.addEventListener('load', () => {
           }, 4000);
         
         game.getPosition();
+        // game.show();
         // game.reset(); 
-        // game.click();
-        // game.clickPos(this.onclick);
+        
     }
 
    

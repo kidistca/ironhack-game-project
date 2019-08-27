@@ -1,7 +1,18 @@
+const CARD_IMAGES1 = [
+    Object.assign(new Image(), { src: "images/geez1.png" }),
+    Object.assign(new Image(), { src: "images/geez2.png" }),
+    Object.assign(new Image(), { src: "images/geez3.png" }),
+    Object.assign(new Image(), { src: "images/geez4.png" }),
+    Object.assign(new Image(), { src: "images/geez5.png" }),
+    Object.assign(new Image(), { src: "images/geez6.png" }),
+    Object.assign(new Image(), { src: "images/geez7.png" }),
+    Object.assign(new Image(), { src: "images/geez8.png" }),
+];
 class Board{
     constructor(game){
         this.game = game;
         this.context = this.game.context;
+        this.images = CARD_IMAGES1;
         // this.height = this.context.height;
         // this.width = this.context.width;
         
@@ -26,6 +37,7 @@ class Board{
                 this.context.stroke();
                 }
     }
+  
     hide(){
         const SIZEX = 125;
         const SIZEY = 125;
@@ -35,5 +47,7 @@ class Board{
                 this.context.fillRect(i*SIZEX, j*SIZEY, 120, 120);
         }
     }
-    }
+}
+
+
 }

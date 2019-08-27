@@ -1,18 +1,18 @@
-const CARD_IMAGES1 = [
-    Object.assign(new Image(), { src: "images/geez1.png" }),
-    Object.assign(new Image(), { src: "images/geez2.png" }),
-    Object.assign(new Image(), { src: "images/geez3.png" }),
-    Object.assign(new Image(), { src: "images/geez4.png" }),
-    Object.assign(new Image(), { src: "images/geez5.png" }),
-    Object.assign(new Image(), { src: "images/geez6.png" }),
-    Object.assign(new Image(), { src: "images/geez7.png" }),
-    Object.assign(new Image(), { src: "images/geez8.png" }),
-];
+// const CARD_IMAGES1 = [
+//     Object.assign(new Image(), { src: "images/geez1.png" }),
+//     Object.assign(new Image(), { src: "images/geez2.png" }),
+//     Object.assign(new Image(), { src: "images/geez3.png" }),
+//     Object.assign(new Image(), { src: "images/geez4.png" }),
+//     Object.assign(new Image(), { src: "images/geez5.png" }),
+//     Object.assign(new Image(), { src: "images/geez6.png" }),
+//     Object.assign(new Image(), { src: "images/geez7.png" }),
+//     Object.assign(new Image(), { src: "images/geez8.png" }),
+// ];
 class Board{
     constructor(game){
         this.game = game;
         this.context = this.game.context;
-        this.images = CARD_IMAGES1;
+        // this.images = CARD_IMAGES1;
         // this.height = this.context.height;
         // this.width = this.context.width;
         

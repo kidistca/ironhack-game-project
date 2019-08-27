@@ -1,3 +1,10 @@
+const SOUNDS = {
+    backgroundMusic: "https://ia802908.us.archive.org/0/items/mythium/JLS_ATI.mp3",
+    cardClicked: "https://anjaboettcher.github.io/The-very-hungry-caterpillar-game/images/chewing.mp3",
+    congratulations: "https://anjaboettcher.github.io/The-very-hungry-caterpillar-game/images/happykids.mp3",
+    lost: "https://anjaboettcher.github.io/The-very-hungry-caterpillar-game/images/HONK.wav"
+  };
+
 const arrayShuffle = array => {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -17,10 +24,15 @@ class Game {
         this.types = [];
         this.row = 0;
         this.column = 0;
+        this.scoreBoard = new ScoreBoard(this);
+        this.sound = new Sound();
+        this.sound.loadSounds(SOUNDS);
+
 
     }
 
     positionAlphabet(){
+        this.types = [];
         const size = 4;
         for (let index = 0; index < (size * size) / 2; index++) {
             this.types.push(index);
@@ -30,10 +42,10 @@ class Game {
         this.deck = shuffled.map((type, index) => {
             this.row = Math.floor(index / 4);
             this.column = index % 4;
-            // this.card = new Card(this, type, row, column);
-            return new Card(this, type, this.row, this.column);
+            //this.card = new Card(this, type, row, column);
+             return new Card(this, type, this.row, this.column);
         });
-        // console.log(type);
+        console.log(this.types);
         
     }
 
@@ -42,14 +54,35 @@ class Game {
         // this.card = new Card();
         // setTimeout(()=> {
             this.board.hide();
+            this.score = 0;
+            
         //   }, 4000);
         
     }
-
     getPosition(){
         // this.control = new Control();
         this.control.getposition(this.types);
     }
+    start () {
+        // this.reset();
+        this.positionAlphabet();
+        // this.clear();
+        this.paint();
+        this.loop(0);
+        this.getPosition();
+      }
+
+    loop (timestamp) {
+        if (this.timer < timestamp - this.SPEED) {
+        //   this.runLogic();
+        this.paint();
+        setTimeout(()=> {
+            this.reset()
+          }, 4000);  
+          this.timer = timestamp;
+        }
+        // window.requestAnimationFrame((timestamp) => this.loop(timestamp));
+      }
 
     clear(){
         const width = this.canvas.width;
@@ -58,24 +91,32 @@ class Game {
     }
 
     paint (){
+        // this.clear();
         this.board.paint();
         for (let index = 0; index < this.deck.length; index++) {
             const card = this.deck[index];
             card.paint();
         }
+        this.scoreBoard.paint();
+       
     }
 
     show(index){
+        this.sound.play('cardClicked', { volume: 1 });
         for (let i = 0; i < this.deck.length; i++) {
             if(i===index){
             const card = this.deck[i];
-            card.show(index);
+            card.show(i);
             }
+            else{
+                this.board.paint();
+            }
+           this.score++;
         }
         // const card = this.deck[index];
         // card.show(index);
         // return new Card(this, index, this.row, this.column);
            
-        }
+        }  
     
 }

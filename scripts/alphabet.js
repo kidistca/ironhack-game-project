@@ -35,25 +35,19 @@ class Card {
         this.context.drawImage(this.images[this.type], this.column * size, this.row * size, 120, 120);
     // }
 }
+    matchingCards(){
 
+    }
 
-
-
-
-
-//     hide(){
-//         const SIZEX = 125;
-//         const SIZEY = 125;
-//         this.context.fillStyle ="#7BCCB5";
-//         for(let i=0; i<4; i++){
-//             for(let j=0; j<16; j++){
-//                 this.context.fillRect(i*SIZEX, j*SIZEY, 120, 120);
-//         }
-//     }
-// }
-    // show(index){
-    //     const canvas = this.game.canvas;
-    //     const size = canvas.width / 4; 
-    //     this.context.drawImage(this.images[index], this.column * size, this.row * size, 120, 120);
+    // hide(){
+    //     const SIZEX = 125;
+    //     const SIZEY = 125;
+    //     this.context.fillStyle ="#7BCCB5";
+    //     for(let i=0; i<4; i++){
+    //         for(let j=0; j<16; j++){
+    //             this.context.fillRect(i*SIZEX, j*SIZEY, 120, 120);
+    //     }
     // }
+    // }
+   
 }

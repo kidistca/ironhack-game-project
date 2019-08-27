@@ -10,7 +10,6 @@ class Control{
         // let index = "";
      window.addEventListener("mousedown", event =>{
         if (event.target.tagName === 'CANVAS') {
-            // this.game.paint();
             let x = event.x;
             let y = event.y;
         

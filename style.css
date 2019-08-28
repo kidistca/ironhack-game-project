@@ -47,7 +47,7 @@ canvas {
   background-color: #7BCCB5;
   /* background: var(--color-foreground-text-sub); */
 }
-.scorebtn{
+#scorebtn{
   background-color: #7BCCB5;
   /* color:#7BCCB5; */
 }
@@ -56,5 +56,5 @@ canvas {
   justify-content: flex-start;
   justify-content: center;
   margin-top: 80px;
-  margin-right: 100px;
+  margin-right: 130px;
 }

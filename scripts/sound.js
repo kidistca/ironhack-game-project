@@ -12,8 +12,8 @@ class Sound {
   
     play (name, options) {
       const sound = this.sounds[name];
-      sound.loop = options && options.loop || false;
-      sound.volume = options && options.volume || 0.05;
+      // sound.loop = options && options.loop || false;
+      // sound.volume = options && options.volume || 0.05;
       sound.play();
       // return sound;
     }

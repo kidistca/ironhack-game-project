@@ -4,20 +4,18 @@ window.addEventListener('load', () => {
     const game = new Game($canvas);
 
     document.getElementById('start-game').onclick = function (){  
-        // game.reset(); 
+        
         // game.start();
+        game.reset(); 
         game.positionAlphabet();
         game.clear();  
         // game.loop(0);
         game.paint();
         setTimeout(()=> {
-            game.reset()
+            game.hide()
           }, 4000);  
         game.getPosition();
         }
  });
-
-  // game.show();
-        // game.reset(); 
 
  

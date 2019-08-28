@@ -24,7 +24,7 @@ class Game {
         this.types = [];
         this.row = 0;
         this.column = 0;
-        this.scoreBoard = new ScoreBoard(this);
+        // this.scoreBoard = new ScoreBoard(this);
         this.sound = new Sound();
         this.sound.loadSounds(SOUNDS);
 
@@ -49,18 +49,22 @@ class Game {
         
     }
 
-    reset(){
-        // const card = new Card();
-        // this.card = new Card();
-        // setTimeout(()=> {
-            this.board.hide();
-            this.score = 0;
+    // reset(){
+    //     // const card = new Card();
+    //     // this.card = new Card();
+    //     // setTimeout(()=> {
+    //         // this.board.hide();
+    //         // this.score = 0;
             
-        //   }, 4000);
+    //     //   }, 4000);
         
+    // }
+    reset(){
+        this.score = 0;
+        document.getElementById("scorebtn").style.color = "white";
+        document.getElementById("scorebtn").innerText = "ውጤት : " + this.score;
     }
     getPosition(){
-        // this.control = new Control();
         this.control.getposition(this.types);
     }
     start () {
@@ -91,14 +95,19 @@ class Game {
     }
 
     paint (){
-        // this.clear();
         this.board.paint();
         for (let index = 0; index < this.deck.length; index++) {
             const card = this.deck[index];
             card.paint();
         }
-        this.scoreBoard.paint();
+        // this.scoreBoard.paint();
        
+    }
+    hide(){
+        for (let index = 0; index < this.deck.length; index++) {
+            const card = this.deck[index];
+            card.hide();
+        }
     }
 
     show(index){
@@ -108,15 +117,16 @@ class Game {
             const card = this.deck[i];
             card.show(i);
             }
-            else{
-                this.board.paint();
+        }       
+    }
+    hideCard(index){
+        for (let i = 0; i < this.deck.length; i++) {
+            if(i===index){
+            const card = this.deck[i];
+            card.hideCard(i);
             }
-           this.score++;
-        }
-        // const card = this.deck[index];
-        // card.show(index);
-        // return new Card(this, index, this.row, this.column);
-           
-        }  
+    } 
     
+
+}
 }

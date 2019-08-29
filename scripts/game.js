@@ -17,7 +17,7 @@ class Game {
         this.column = 0;
         this.sound = new Sound();
         this.sound.loadSounds(SOUNDS);
-        this.score = 0;
+        // this.score = 0;
         // this.card = new Card(this, 0, this.row, this.column);
     }
     arrayShuffle(array){
@@ -40,26 +40,27 @@ class Game {
             this.row = Math.floor(index / 4);
             this.column = index % 4;
               return new Card(this, type, this.row, this.column);
-        });
-        
-        
+        });  
     }
-    reset(){
+
+    reset(){ 
+        this.wonLost();
+        this.score = 0;
         document.getElementById("scorebtn").style.color = "white";
         document.getElementById("scorebtn").innerText = "ውጤት : " + this.score;
-        this.score = 0;
     }
-    getPosition(){
-        this.control.getposition(this.types);
-    }
+   
     start () {
-        this.reset(); 
+        this.reset();
         this.positionAlphabet(); 
         this.paint();
         setTimeout(()=> {
             this.hide()
-          }, 8000);  
+          }, 4000);  
         this.getPosition();
+        // this.wonLost(); 
+       
+        // this.flip();
       }
 
     paint (){ 
@@ -84,7 +85,15 @@ class Game {
     
     hideCard(index){
         //  this.card.hideCard(index);
-         this.deck[index].hideCard(index);
-
-}
+        this.deck[index].hideCard(index);
+    }
+    getPosition(){
+        this.control.getposition(this.types);
+    }
+    // flip(){
+    //     this.control.flipCard(this.types);
+    // }
+    wonLost(){
+        this.control.wonLost();
+    }
 }

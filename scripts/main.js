@@ -4,10 +4,9 @@ window.addEventListener('load', () => {
     const game = new Game($canvas);
 
     document.getElementById('start-game').onclick = function (){  
-        
-        game.start(game);
-  
+        game.start();
         }
+        
  });
 
  

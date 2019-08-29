@@ -21,7 +21,6 @@ class Control {
                 const row = Math.floor(y / 125);
                 const col = Math.floor(x / 125);
                 this.index = col + Math.floor(row * 4);
-
                 this.game.show(this.index);
                 this.flipCard(types);
          }
@@ -32,7 +31,6 @@ class Control {
      flipCard(types){ 
          console.log(types); 
          console.log(this.index); 
-            // this.score = 0; 
                 if (this.shownCards.length === 0) {
                     this.previousIndex = this.index;
                     this.shownCards.push(types[this.index]);
@@ -72,12 +70,13 @@ class Control {
                 
             }
      wonLost(){
-        if(this.score >= 500){
+        if(this.score >= 100){
+            this.context.clearRect(0,0, 500, 500);
             console.log("you won");
             this.context.drawImage(this.image, 0, 0, 500, 500);
             this.game.sound.play('congratulations', { volume: 1 });
 
-             window.requestAnimationFrame(() => this.wonLost());
+            //  window.requestAnimationFrame();
            } 
         //  else{
         //     console.log("You Lost");

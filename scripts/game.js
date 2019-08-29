@@ -1,15 +1,14 @@
 const SOUNDS = {
-    backgroundMusic: "https://ia802908.us.archive.org/0/items/mythium/JLS_ATI.mp3",
-    cardClicked: "https://anjaboettcher.github.io/The-very-hungry-caterpillar-game/images/chewing.mp3",
-    congratulations: "https://anjaboettcher.github.io/The-very-hungry-caterpillar-game/images/happykids.mp3",
-    lost: "https://anjaboettcher.github.io/The-very-hungry-caterpillar-game/images/HONK.wav"
+    cardflip: "audios/cardflip.mp3",
+    cardshuffle: "audios/cardshuffle.mp3",
+    won: "audios/won.mp3",
+    lost: "audios/lost.mp3"
 };
 
 class Game {
     constructor(canvas) {
         this.canvas = canvas;
         this.context = canvas.getContext('2d');
-
         // this.board = new Board(this);
         this.control = new Control(this);
         this.sound = new Sound();
@@ -30,6 +29,7 @@ class Game {
     }
 
     start() {
+        this.sound.play('cardshuffle', {volume: 1});
         this.reset();
         this.positionAlphabet();
         this.paintAll();
@@ -71,7 +71,7 @@ class Game {
     }
 
     show(index) {
-        this.sound.play('cardClicked', {volume: 1});
+        this.sound.play('cardflip', {volume: 1});
         this.deck[index].paint();
     }
 }

@@ -24,6 +24,7 @@ class Card {
         const canvas = this.game.canvas;
         const size = canvas.width / 4; 
         this.context.drawImage(this.images[this.type], this.column * size, this.row * size, 120, 120);
+        
     }
 
     hideCard(){

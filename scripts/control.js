@@ -10,17 +10,17 @@ class Control {
         this.index = "";
         this.image = new Image();
         this.image.src = "./images/clap.jpg";
-        this.imageloss = new Image();
-        this.imageloss.src = "./images/lost.png";
+        this.imagelost = new Image();
+        this.imagelost.src = "./images/lost.png";
     }
 
     getposition(types) {
         window.addEventListener("mousedown", event => {
             console.log(this.collectedCards.length )
-            if(this.collectedCards.length === 16){
-                console.log("END OF GAME");
-                this.wonLost();
-            }
+            // if(this.collectedCards.length === 16){
+            //     console.log("END OF GAME");
+            //     this.wonLost();
+            // }
             if (event.target.tagName === 'CANVAS') {
                 let x = event.x - this.game.canvas.offsetLeft;
                 let y = event.y - this.game.canvas.offsetTop;
@@ -64,7 +64,7 @@ class Control {
             setTimeout(() => {
                this.game.deck[this.previousIndex].hideCard();
                this.game.deck[this.index].hideCard();
-            }, 500);
+            }, 400);
         }
         if (this.score < 0) {
             document.getElementById("scorebtn").style.color = "red";
@@ -78,16 +78,16 @@ class Control {
         if (this.collectedCards.length === 16 && this.score >= 500) {
             this.context.clearRect(0,0,500,500);
             this.context.drawImage(this.image, 0, 0, 500, 500);
-            this.game.sound.play('congratulations', {volume: 1});
+            this.game.sound.play('won', {volume: 1});
         }
          else if(this.collectedCards.length === 16 && this.score <= 400){
             console.log("You Lost");
             this.context.clearRect(0,0,500,500);
-            this.context.drawImage(this.imageloss, 0, 0, 500, 500);
+            this.context.drawImage(this.imagelost, 0, 0, 500, 500);
             this.game.sound.play('lost', { volume: 1 });
          }
 
         //-------------Works for win but loops, without this the picture comes behind the canvas   
-        //window.requestAnimationFrame(() => this.wonLost());
+        window.requestAnimationFrame(() => this.wonLost());
     }
 }

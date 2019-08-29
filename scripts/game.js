@@ -10,19 +10,20 @@ class Game {
         this.canvas = canvas;
         this.context = canvas.getContext('2d');
 
-        this.deck = []; // This is an array of new Card
-        this.board = new Board(this);
+        // this.board = new Board(this);
         this.control = new Control(this);
         this.sound = new Sound();
         this.sound.loadSounds(SOUNDS);
 
-        this.types = [];
         this.row = 0;
         this.column = 0;
     }
-
+    
     reset() {
-        //this.wonLost();
+        this.control.wonLost();
+        this.types = [];
+        this.deck = []; // This is an array of new Card
+        this.board = new Board(this);
         this.control.score = 0;
         document.getElementById("scorebtn").style.color = "white";
         document.getElementById("scorebtn").innerText = "ውጤት : " + this.control.score;
@@ -52,18 +53,14 @@ class Game {
         for (let index = 0; index < (size * size) / 2; index++) {
             this.types.push(index);
             this.types.push(index);
-            console.log("types array", this.types)
         }
         const shuffled = this.arrayShuffle(this.types);
         this.deck = shuffled.map((type, index) => {
             this.row = Math.floor(index / 4);
             this.column = index % 4;
-            console.log("deck array", this.deck)
-
             return new Card(this, type, this.row, this.column);
         });
     }
-
 
     paintAll() {
         this.board.paint();
@@ -75,15 +72,6 @@ class Game {
 
     show(index) {
         this.sound.play('cardClicked', {volume: 1});
-        this.deck[index].show(index);
-    }
-
-    hideCard(index) {
-        //  this.card.hideCard(index);
-        this.deck[index].hideCard(index);
-    }
-
-    wonLost() {
-        this.control.wonLost();
+        this.deck[index].paint();
     }
 }

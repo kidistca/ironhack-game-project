@@ -14,11 +14,11 @@ body{
 canvas {
   /* background-color: white; */
   background: transparent;
-
 }
 .buttons{
   padding: 0 20px;
 }
+
 .buttons button{
   display: flex;
   /* position: fixed;   */
@@ -34,6 +34,7 @@ canvas {
   margin-bottom: 20px;
   outline: 0;
   box-shadow: none!important;
+  align-items: flex-start;
 
   /* left: 50%; 
 	top: 50%; 

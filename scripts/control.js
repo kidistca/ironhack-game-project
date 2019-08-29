@@ -3,6 +3,7 @@ class Control {
         this.game = game;
         this.context = this.game.context;
         this.shownCards = [];
+        this.collectedCards = [];
         this.previousIndex = "";
         this.setVisible = false;
         this.score = 0;
@@ -15,75 +16,78 @@ class Control {
 
     getposition(types) {
         window.addEventListener("mousedown", event => {
-         if (event.target.tagName === 'CANVAS') {
+            console.log(this.collectedCards.length )
+            if(this.collectedCards.length === 16){
+                console.log("END OF GAME");
+                this.wonLost();
+            }
+            if (event.target.tagName === 'CANVAS') {
                 let x = event.x - this.game.canvas.offsetLeft;
-                let y = event.y- this.game.canvas.offsetTop;
+                let y = event.y - this.game.canvas.offsetTop;
                 const row = Math.floor(y / 125);
                 const col = Math.floor(x / 125);
                 this.index = col + Math.floor(row * 4);
                 this.game.show(this.index);
+
                 this.flipCard(types);
-         }
-         });
-        }
+            }
+        });
+    }
 
     //Comparing if two flipped cards are matching or non-matching 
-     flipCard(types){ 
-         console.log(types); 
-         console.log(this.index); 
-                if (this.shownCards.length === 0) {
-                    this.previousIndex = this.index;
-                    this.shownCards.push(types[this.index]);
-                    this.setVisible = true;
-                } else if (this.shownCards.length === 1 && this.index !== this.previousIndex) {
-                        this.shownCards.push(types[this.index]);
-                        this.setVisible = true;
-                   
-                    if (this.shownCards.length === 2) {
-                        if (this.shownCards[0] === this.shownCards[1]) {
-                            this.shownCards.length = 0;
-                            // if(this.setVisible === true){
-                                this.score += 100;
-                            // }else{
-                            //     this.score = this.score;
-                            // }
+    flipCard(types) {
+       
+        //------ pushing clicked cards to array -----
+        if (this.shownCards.length === 0) {
+            this.previousIndex = this.index;
+            this.shownCards.push(types[this.index]);
+        }
+        if (this.shownCards.length === 1 && this.index !== this.previousIndex) {
+            this.shownCards.push(types[this.index]);
+            console.log("two element showncard", this.shownCards);
+        }
 
-                        } else if (this.shownCards[0] !== this.shownCards[1]) {
-                            // this.game.hideCard(this.previousIndex);
-                            // this.game.hideCard(this.index);
-                            this.shownCards.length = 0;
-                                this.score -= 100;
+        //------ comparing clicked cards in array -----       
+        if (this.shownCards.length === 2 && this.shownCards[0] === this.shownCards[1]) {
+            this.collectedCards.push(this.index);
+            this.collectedCards.push(this.previousIndex);
+            this.score += 100;
+            this.shownCards.length = 0;
+            
+            console.log("i am collecting ", this.collectedCards);
+        } 
 
-                            // if(this.setVisible === true){
-                            //     this.score -= 100;
-                            // }else{
-                            //     this.score = this.score;
-                            // }
+        if (this.shownCards.length === 2 && this.shownCards[0] !== this.shownCards[1]) {
+            this.score -= 100;
+            this.shownCards.length = 0;
 
-                        }
-                        if (this.score < 0) {
-                            document.getElementById("scorebtn").style.color = "red";
-                        }
-                        document.getElementById("scorebtn").innerText = "ውጤት : " + this.score;
-                    }
-                }
-                
-            }
-     wonLost(){
-        if(this.score >= 100){
-            this.context.clearRect(0,0, 500, 500);
-            console.log("you won");
+            setTimeout(() => {
+               this.game.deck[this.previousIndex].hideCard();
+               this.game.deck[this.index].hideCard();
+            }, 500);
+        }
+        if (this.score < 0) {
+            document.getElementById("scorebtn").style.color = "red";
+        } else  document.getElementById("scorebtn").style.color = "white";
+            document.getElementById("scorebtn").innerText = "ውጤት : " + this.score;
+        }
+
+
+    //This is kind of working but it needs to be called in the correct place
+    wonLost() {
+        if (this.collectedCards.length === 16 && this.score >= 500) {
+            this.context.clearRect(0,0,500,500);
             this.context.drawImage(this.image, 0, 0, 500, 500);
-            this.game.sound.play('congratulations', { volume: 1 });
+            this.game.sound.play('congratulations', {volume: 1});
+        }
+         else if(this.collectedCards.length === 16 && this.score <= 400){
+            console.log("You Lost");
+            this.context.clearRect(0,0,500,500);
+            this.context.drawImage(this.imageloss, 0, 0, 500, 500);
+            this.game.sound.play('lost', { volume: 1 });
+         }
 
-            //  window.requestAnimationFrame();
-           } 
-        //  else{
-        //     console.log("You Lost");
-        //     this.context.drawImage(this.imageloss, 0, 0, 500, 500);
-        //     // this.game.sound.play('lost', { volume: 1 });
-        //  }
-        //     window.requestAnimationFrame(() => this.wonLost());
-           
-     }       
+        //-------------Works for win but loops, without this the picture comes behind the canvas   
+        //window.requestAnimationFrame(() => this.wonLost());
+    }
 }

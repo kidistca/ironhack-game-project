@@ -26,21 +26,9 @@ class Card {
         this.context.drawImage(this.images[this.type], this.column * size, this.row * size, 120, 120);
     }
 
-    // Checked
-    show(){
-        const canvas = this.game.canvas;
-        const size = canvas.width / 4; 
-        this.context.drawImage(this.images[this.type], this.column * size, this.row * size, 120, 120);
-        this.setVisible = true;
-    }
-
-    hideCard(index){
-        console.log("hide" + index);
-        const SIZEX = 125;
-        const SIZEY = 125;
-        this.context.fillStyle ="#7BCCB5";
-        this.context.fillStyle ="red";
-        this.context.fillRect(index*SIZEX, index*SIZEY, 120, 120);
-    }
-
+    hideCard(){
+         const SIZE = 125;
+         this.context.fillStyle ="#7BCCB5";
+         this.context.fillRect(this.column*SIZE, this.row*SIZE, 120, 120);
+     }
 }

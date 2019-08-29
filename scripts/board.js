@@ -2,7 +2,7 @@ class Board{
     constructor(game){
         this.game = game;
         this.context = this.game.context;
-        
+       
     }
     //Checked
     paint (){
@@ -36,4 +36,13 @@ class Board{
             }
         }
     }
+
+    //THis makes sense but it is not working yet
+    // hideCard(col,row){
+    //     // console.log("hide" + index);
+    //      const SIZE = 125;
+    //      this.context.fillStyle ="#7BCCB5";
+    //      this.context.fillStyle ="red";
+    //      this.context.fillRect(col*SIZE, row*SIZE, 120, 120);
+    //  }
 }

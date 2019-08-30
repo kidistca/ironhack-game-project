@@ -88,6 +88,6 @@ class Control {
          }
 
         //-------------Works for win but loops, without this the picture comes behind the canvas   
-        // window.requestAnimationFrame(() => this.wonLost());
+        window.requestAnimationFrame(() => this.wonLost());
     }
 }

@@ -1,12 +1,12 @@
 const CARD_IMAGES = [
-    Object.assign(new Image(), { src: "images/geez1.png" }),
-    Object.assign(new Image(), { src: "images/geez2.png" }),
-    Object.assign(new Image(), { src: "images/geez3.png" }),
-    Object.assign(new Image(), { src: "images/geez4.png" }),
-    Object.assign(new Image(), { src: "images/geez5.png" }),
-    Object.assign(new Image(), { src: "images/geez6.png" }),
-    Object.assign(new Image(), { src: "images/geez7.png" }),
-    Object.assign(new Image(), { src: "images/geez8.png" }),
+    Object.assign(new Image(), { src: "images/geez1.png", soundSrc: ""}),
+    Object.assign(new Image(), { src: "images/geez2.png", soundSrc: ""}),
+    Object.assign(new Image(), { src: "images/geez3.png", soundSrc: "" }),
+    Object.assign(new Image(), { src: "images/geez4.png", soundSrc: "" }),
+    Object.assign(new Image(), { src: "images/geez5.png", soundSrc: "" }),
+    Object.assign(new Image(), { src: "images/geez6.png", soundSrc: "" }),
+    Object.assign(new Image(), { src: "images/geez7.png", soundSrc: "" }),
+    Object.assign(new Image(), { src: "images/geez8.png", soundSrc: "" }),
 ];
 
 class Card {

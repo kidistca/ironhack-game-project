@@ -71,6 +71,9 @@ class Game {
     }
 
     show(index) {
+        if (!this.sound.sounds['cardflip'].paused){
+            this.sound.sounds['cardflip'].currentTime = 0
+        }
         this.sound.play('cardflip', {volume: 1});
         this.deck[index].paint();
     }

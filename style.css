@@ -12,11 +12,11 @@ body{
 } 
 
 canvas {
-  /* background-color: white; */
   background: transparent;
 }
 .buttons{
-  padding: 0 20px;
+  /* padding: 0 20px; */
+  padding-right: 20px;
 }
 
 .buttons button{
@@ -25,7 +25,6 @@ canvas {
   justify-content: space-between; 
   font-family: monospace;
   font-size: 40px;
-  /* background-color: black; */
   color: #fff;
   padding: 20px 40px;
   border: 0;
@@ -35,27 +34,26 @@ canvas {
   outline: 0;
   box-shadow: none!important;
   align-items: flex-start;
-
-  /* left: 50%; 
-	top: 50%; 
-  margin-left: 250px; 
-  margin-top: 65px;   */
+  width: 350px;
 }
+
 #start-game{
   background-color: black;
 }
+
 #start-game:hover{
   background-color: #7BCCB5;
-  /* background: var(--color-foreground-text-sub); */
 }
+
 #scorebtn{
   background-color: #7BCCB5;
-  /* color:#7BCCB5; */
 }
+
 .all{
   display: flex;
   justify-content: flex-start;
   justify-content: center;
   margin-top: 80px;
   margin-right: 130px;
+  max-width: 100%;
 }

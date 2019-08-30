@@ -36,7 +36,7 @@ class Game {
         setTimeout(() => {
             this.board.boardHide()
             this.control.getposition(this.types);
-        }, 4000);
+        }, 7000);
     }
 
     arrayShuffle(array) {

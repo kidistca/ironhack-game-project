@@ -47,7 +47,7 @@ class Control {
             console.log("two element showncard", this.shownCards);
         }
 
-        //------ comparing clicked cards in array -----       
+        //------ comparing clicked cards in array, to compare only 2 at a time and clear the array -----       
         if (this.shownCards.length === 2 && this.shownCards[0] === this.shownCards[1]) {
             this.collectedCards.push(this.index);
             this.collectedCards.push(this.previousIndex);
@@ -69,18 +69,18 @@ class Control {
         if (this.score < 0) {
             document.getElementById("scorebtn").style.color = "red";
         } else  document.getElementById("scorebtn").style.color = "white";
-            document.getElementById("scorebtn").innerText = "ውጤት : " + this.score;
+            document.getElementById("scorebtn").innerText = "ውጤት: " + this.score;
         }
 
 
     //This is kind of working but it needs to be called in the correct place
     wonLost() {
-        if (this.collectedCards.length === 16 && this.score >= 500) {
+        if (this.collectedCards.length >= 16 && this.score >= 500) {
             this.context.clearRect(0,0,500,500);
             this.context.drawImage(this.image, 0, 0, 500, 500);
             this.game.sound.play('won', {volume: 1});
         }
-         else if(this.collectedCards.length === 16 && this.score <= 400){
+         else if(this.collectedCards.length >= 16 && this.score <= 400){
             console.log("You Lost");
             this.context.clearRect(0,0,500,500);
             this.context.drawImage(this.imagelost, 0, 0, 500, 500);

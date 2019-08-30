@@ -36,8 +36,7 @@ class Board{
             }
         }
     }
-
-    //THis makes sense but it is not working yet
+    
     // hideCard(col,row){
     //     // console.log("hide" + index);
     //      const SIZE = 125;
